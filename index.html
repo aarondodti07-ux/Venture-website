@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SolVolt – Investor Introduction</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #101826 0, #050710 55%, #020308 100%);
+      color: #f5f5f7;
+      line-height: 1.6;
+    }
+
+    /* Layout */
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 7vw;
+      background: rgba(4, 6, 15, 0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+    }
+
+    .nav-links a {
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-size: 0.95rem;
+      opacity: 0.8;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .nav-links a.active {
+      opacity: 1;
+      font-weight: 600;
+      border-bottom: 2px solid #48e8b6;
+      padding-bottom: 0.1rem;
+    }
+
+    main {
+      min-height: 70vh;
+    }
+
+    section {
+      scroll-margin-top: 80px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 3rem;
+      padding: 5rem 7vw 3rem;
+      align-items: center;
+    }
+
+    .section {
+      padding: 3.5rem 7vw;
+    }
+
+    .section.alt {
+      background: radial-gradient(circle at top left, #151c2b 0, #050712 55%, #020308 100%);
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-inner.center {
+      text-align: center;
+    }
+
+    .section-inner.narrow {
+      max-width: 700px;
+    }
+
+    .two-column {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: flex-start;
+    }
+
+    .site-footer {
+      padding: 1.5rem 7vw 2rem;
+      font-size: 0.85rem;
+      text-align: center;
+      opacity: 0.6;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Hero */
+
+    .hero-content h1 {
+      font-size: clamp(2.4rem, 3.8vw, 3.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+      max-width: 34rem;
+    }
+
+    .tagline {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .glow-circle {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: radial-gradient(circle, #48e8b6 0, rgba(72, 232, 182, 0.05) 60%, transparent 70%);
+      opacity: 0.9;
+      filter: blur(1px);
+      animation: pulse 5s ease-in-out infinite;
+    }
+
+    .hero-card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(10, 16, 28, 0.95), rgba(18, 32, 50, 0.95));
+      border-radius: 1.5rem;
+      padding: 1.5rem 1.8rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 26px 60px rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      max-width: 320px;
+    }
+
+    .hero-card h2 {
+      font-size: 1.1rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-card p {
+      font-size: 0.92rem;
+    }
+
+    /* Typography & reusable */
+
+    h1, h2, h3 {
+      color: #f7f7ff;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.9rem;
+    }
+
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .script-block {
+      font-size: 0.98rem;
+      opacity: 0.92;
+    }
+
+    .script-block.center {
+      text-align: center;
+    }
+
+    p {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .bullet-list {
+      list-style: none;
+      margin-top: 0.6rem;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 1.1rem;
+      margin-bottom: 0.3rem;
+      font-size: 0.93rem;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #48e8b6;
+    }
+
+    /* Buttons */
+
+    .primary-btn,
+    .secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.65rem 1.5rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+    }
+
+    .primary-btn {
+      background: linear-gradient(135deg, #3de0a7, #8af3ff);
+      color: #041016;
+      box-shadow: 0 12px 30px rgba(61, 224, 167, 0.35);
+      margin-top: 1.4rem;
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(61, 224, 167, 0.45);
+    }
+
+    .secondary-btn {
+      background: transparent;
+      color: #48e8b6;
+      border: 1px solid rgba(72, 232, 182, 0.6);
+      margin-top: 1rem;
+    }
+
+    .secondary-btn:hover {
+      background: rgba(72, 232, 182, 0.08);
+      transform: translateY(-1px);
+    }
+
+    /* Cards & surfaces */
+
+    .card, .subtle-card, .market-card {
+      border-radius: 1.3rem;
+      padding: 1.5rem 1.7rem;
+      background: linear-gradient(135deg, rgba(10, 14, 25, 0.96), rgba(10, 20, 35, 0.96));
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    .subtle-card {
+      background: linear-gradient(135deg, rgba(7, 9, 18, 0.96), rgba(7, 14, 24, 0.96));
+    }
+
+    .market-card {
+      margin-top: 2rem;
+    }
+
+    /* Pills, users, features */
+
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+
+    .feature-pill,
+    .user-pill {
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: radial-gradient(circle at top left, rgba(72, 232, 182, 0.16), rgba(8, 10, 18, 0.95));
+      white-space: nowrap;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      justify-content: center;
+      margin-top: 1.3rem;
+    }
+
+    /* Images */
+
+    .image-card {
+      border-radius: 1.3rem;
+      padding: 0.9rem;
+      background: radial-gradient(circle at top, rgba(72, 232, 182, 0.15), rgba(3, 5, 12, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.75);
+    }
+
+    .image-card img {
+      width: 100%;
+      display: block;
+      border-radius: 1rem;
+    }
+
+    .image-caption {
+      display: block;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    /* Timeline */
+
+    .timeline {
+      list-style: none;
+      margin-top: 0.9rem;
+      border-left: 1px dashed rgba(255, 255, 255, 0.2);
+      padding-left: 1rem;
+    }
+
+    .timeline li {
+      position: relative;
+      margin-bottom: 1rem;
+      padding-left: 0.4rem;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -1.1rem;
+      top: 0.4rem;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #48e8b6;
+      box-shadow: 0 0 18px rgba(72, 232, 182, 0.9);
+    }
+
+    /* Page hero sections */
+
+    .page-hero {
+      padding: 4rem 7vw 2rem;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.2rem, 3vw, 2.7rem);
+      margin-bottom: 1rem;
+    }
+
+    /* Animations */
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.85;
+      }
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .hero,
+      .two-column {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 4rem;
+      }
+
+      .hero-visual {
+        order: -1;
+        margin-bottom: 1.8rem;
+      }
+
+      .nav-links a {
+        margin-left: 1rem;
+        font-size: 0.85rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .site-header {
+        padding-inline: 5vw;
+      }
+
+      .hero,
+      .section,
+      .page-hero {
+        padding-inline: 5vw;
+      }
+
+      .logo {
+        font-size: 1rem;
+      }
+
+      .nav-links {
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="logo">SolVolt</div>
+    <nav class="nav-links">
+      <a href="#intro" class="active">Intro</a>
+      <a href="#design">Design</a>
+      <a href="#planning">Planning</a>
+      <a href="#manufacturing">Manufacturing</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- INTRO / HERO -->
+    <section id="intro" class="hero">
+      <div class="hero-content">
+        <span class="tagline">Power. Anywhere. Sustainably.</span>
+        <h1>SolVolt – Investor Introduction</h1>
+        <p class="script-block">
+          Good morning everyone, and thank you for your time.<br>
+          I’m <strong>Caris</strong>, and I’m excited to introduce <strong>SolVolt</strong> — a simple idea with a powerful impact.
+        </p>
+        <p class="script-block">
+          Today, mobility is everything. We travel, commute, explore… but our devices still depend on power outlets that aren’t always available.
+          And that’s where the problem starts — low battery means lost productivity, safety concerns, and daily inconvenience.
+        </p>
+        <a href="#design" class="primary-btn">Explore the Concept</a>
+      </div>
+
+      <div class="hero-visual">
+        <div class="glow-circle"></div>
+        <div class="hero-card">
+          <h2>On-the-move Solar Power</h2>
+          <p>
+            SolVolt solves this problem with a smart, lightweight bag integrated with a high-efficiency solar panel that keeps your devices alive wherever you go.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM & SOLUTION -->
+    <section class="section">
+      <div class="section-inner two-column">
+        <div>
+          <h2>The Problem We’re Solving</h2>
+          <p class="script-block">
+            Today, mobility is everything. We travel, commute, explore… but our devices still depend on power outlets that aren’t always available.
+            And that’s where the problem starts — low battery means lost productivity, safety concerns, and daily inconvenience.
+          </p>
+        </div>
+        <div class="subtle-card">
+          <h3>Why This Problem Matters</h3>
+          <ul class="bullet-list">
+            <li>Dead phones in unfamiliar or unsafe places</li>
+            <li>Lost productivity during commutes and travel</li>
+            <li>Dependence on public charging points</li>
+            <li>Constant battery anxiety for heavy device users</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="section-inner two-column">
+        <div class="card">
+          <h2>SolVolt Solves This.</h2>
+          <p class="script-block">
+            SolVolt is a smart, lightweight bag integrated with a high-efficiency solar panel that charges your phone, power bank, smartwatch, or any USB device — anytime, anywhere, using clean solar energy.
+          </p>
+          <p class="script-block">
+            No extra weight. No separate panels. Just a bag you already carry, upgraded with sustainable, on-the-move power.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <div class="feature-pill">High-efficiency Solar Panel</div>
+          <div class="feature-pill">USB Charging On-the-go</div>
+          <div class="feature-pill">Lightweight & Practical</div>
+          <div class="feature-pill">Sustainable Lifestyle</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TARGET USERS & MARKET -->
+    <section class="section">
+      <div class="section-inner">
+        <h2>Who is SolVolt For?</h2>
+        <p class="script-block center">
+          Our target users? Students, travellers, trekkers, commuters — essentially anyone who carries a bag and carries a device.
+        </p>
+
+        <div class="pill-row">
+          <span class="user-pill">Students</span>
+          <span class="user-pill">Travellers</span>
+          <span class="user-pill">Trekkers</span>
+          <span class="user-pill">Daily Commuters</span>
+          <span class="user-pill">Remote Workers</span>
+        </div>
+
+        <div class="market-card">
+          <h3>Market Positioning</h3>
+          <p class="script-block">
+            The market for portable clean-energy accessories is growing rapidly, and SolVolt positions itself at the intersection of
+            <strong>lifestyle</strong> + <strong>sustainability</strong> + <strong>convenience</strong>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESIGN SECTION (with design image) -->
+    <section id="design" class="section alt">
+      <div class="section-inner page-hero">
+        <h1>Designing SolVolt</h1>
+        <p class="script-block">
+          SolVolt is designed to be the bag you already carry — thoughtfully upgraded.
+          No extra weight. No separate panels. Just seamless integration of solar power into everyday mobility.
+        </p>
+      </div>
+
+      <div class="section-inner two-column">
+        <div class="card">
+          <h2>Product Design Snapshot</h2>
+          <p>
+            The bag features a <strong>high-efficiency solar panel</strong> on its outer surface, discreet yet powerful.
+            Inside, smart cable routing and a protected electronics compartment enable charging for your phone, power bank, smartwatch, or any USB device.
+          </p>
+          <ul class="bullet-list">
+            <li>Integrated solar panel with reinforced outer layer</li>
+            <li>Internal USB hub / power routing</li>
+            <li>Ergonomic straps & lightweight materials</li>
+            <li>Weather-resistant exterior finish</li>
+          </ul>
+        </div>
+
+        <div class="image-card">
+          <!-- DESIGN IMAGE: replace with your actual image path -->
+          <img src="design.jpeg" alt="SolVolt bag design mockup" />
+          <span class="image-caption">SolVolt – concept design & overall look.</span>
+        </div>
+      </div>
+
+      <div class="section-inner section">
+        <div class="two-column">
+          <div>
+            <h2>Experience-led Design</h2>
+            <p>
+              The core design philosophy behind SolVolt is to <strong>disappear into the user's routine</strong>.
+              It should feel like any other stylish, functional bag — with the quiet superpower of clean energy always available.
+            </p>
+          </div>
+          <div class="feature-grid">
+            <div class="feature-pill">Minimal Visual Bulk</div>
+            <div class="feature-pill">Everyday Aesthetic</div>
+            <div class="feature-pill">Comfort & Durability</div>
+            <div class="feature-pill">Subtle Solar Integration</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANNING SECTION (with planning image) -->
+    <section id="planning" class="section">
+      <div class="section-inner page-hero">
+        <h1>Planning the SolVolt Journey</h1>
+        <p class="script-block">
+          We are currently refining our prototype and exploring partnerships for manufacturing and distribution.
+        </p>
+      </div>
+
+      <div class="section-inner two-column">
+        <div class="image-card">
+          <!-- PLANNING IMAGE: replace with your actual image path -->
+          <img src="plan.jpeg" alt="SolVolt planning and roadmap visualization" />
+          <span class="image-caption">SolVolt – planning, roadmap & strategy.</span>
+        </div>
+
+        <div class="card">
+          <h2>Roadmap & Strategy</h2>
+          <p>
+            Our near-term focus is on validating the core product experience, optimizing charging efficiency in real-world conditions,
+            and ensuring durability for daily use.
+          </p>
+          <ul class="timeline">
+            <li>
+              <span class="timeline-dot"></span>
+              <div>
+                <h3>Phase 1 – Prototype Refinement</h3>
+                <p>Iterating on bag design, solar efficiency, and user comfort based on pilot feedback.</p>
+              </div>
+            </li>
+            <li>
+              <span class="timeline-dot"></span>
+              <div>
+                <h3>Phase 2 – Strategic Partnerships</h3>
+                <p>Collaborating with manufacturing partners, material suppliers, and distribution channels.</p>
+              </div>
+            </li>
+            <li>
+              <span class="timeline-dot"></span>
+              <div>
+                <h3>Phase 3 – Launch & Positioning</h3>
+                <p>
+                  Targeted launch to students, travellers, trekkers, and commuters;
+                  building brand around lifestyle + sustainability + convenience.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="section-inner section alt">
+        <div class="two-column">
+          <div>
+            <h2>Investment & Future Vision</h2>
+            <p class="script-block">
+              With the right investment, we aim to scale production, enhance durability, and introduce smart features
+              like battery storage and IoT-based energy tracking.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Planned Smart Features</h3>
+            <ul class="bullet-list">
+              <li>Integrated battery storage for night-time charging</li>
+              <li>IoT-based energy tracking via mobile app</li>
+              <li>Usage analytics for performance optimization</li>
+              <li>Adaptive power routing to connected devices</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANUFACTURING SECTION (with manufacturing image) -->
+    <section id="manufacturing" class="section alt">
+      <div class="section-inner page-hero">
+        <h1>Manufacturing & Scaling SolVolt</h1>
+        <p class="script-block">
+          We are exploring partnerships for manufacturing and distribution so we can bring SolVolt from prototype to reality, at scale.
+        </p>
+      </div>
+
+      <div class="section-inner two-column">
+        <div class="card">
+          <h2>From Prototype to Production</h2>
+          <p>
+            Our manufacturing approach focuses on <strong>durability</strong>, <strong>material efficiency</strong>,
+            and <strong>scalability</strong>.
+            We aim to work with partners experienced in outdoor gear and electronics integration.
+          </p>
+          <ul class="bullet-list">
+            <li>Selection of rugged fabrics and weather-resistant components</li>
+            <li>Quality control for solar panel performance & safety</li>
+            <li>Modular design for repairs and upgrades</li>
+            <li>Environmentally responsible production practices</li>
+          </ul>
+        </div>
+
+        <div class="image-card">
+          <!-- MANUFACTURING IMAGE: replace with your actual image path -->
+          <img src="manu.jpeg" alt="SolVolt manufacturing and assembly process" />
+          <span class="image-caption">SolVolt – manufacturing & assembly vision.</span>
+        </div>
+      </div>
+
+      <!-- CLOSING SCRIPT -->
+      <div class="section-inner section center narrow">
+        <h2>The Bigger Picture</h2>
+        <p class="script-block">
+          SolVolt isn’t just a product.<br>
+          It’s a step toward a world where power is portable, renewable, and always within reach.
+        </p>
+        <p class="script-block">
+          By merging lifestyle, sustainability, and convenience, SolVolt empowers people to stay connected and productive,
+          without depending on traditional power outlets.
+        </p>
+        <a href="#intro" class="primary-btn">Back to Introduction</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2025 SolVolt · Portable, renewable power within reach.</p>
+  </footer>
+</body>
+</html>
